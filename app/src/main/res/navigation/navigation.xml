@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/countryFragment">
+
+    <fragment
+        android:id="@+id/countryFragment"
+        android:name="com.example.appgreenlightdemo.ui.fragments.country.CountryFragment"
+        android:label="fragment_country"
+        tools:layout="@layout/fragment_country" >
+        <action
+            android:id="@+id/action_countryFragment_to_zoneFragment"
+            app:destination="@id/zoneFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/zoneFragment"
+        android:name="com.example.appgreenlightdemo.ui.fragments.zone.ZoneFragment"
+        android:label="fragment_zone"
+        tools:layout="@layout/fragment_zone">
+
+        <argument
+            android:name="Country"
+            app:argType="string"
+            android:defaultValue="INDIA" />
+        <action
+            android:id="@+id/action_zoneFragment_to_regionFragment"
+            app:destination="@id/regionFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/regionFragment"
+        android:name="com.example.appgreenlightdemo.ui.fragments.region.RegionFragment"
+        android:label="fragment_region"
+        tools:layout="@layout/fragment_region" >
+        <action
+            android:id="@+id/action_regionFragment_to_areaFragment"
+            app:destination="@id/areaFragment" />
+        <argument
+            android:name="Zone"
+            app:argType="string"
+            android:defaultValue="INDIA::NA" />
+    </fragment>
+    <fragment
+        android:id="@+id/areaFragment"
+        android:name="com.example.appgreenlightdemo.ui.fragments.area.AreaFragment"
+        android:label="fragment_area"
+        tools:layout="@layout/fragment_area" >
+        <action
+            android:id="@+id/action_areaFragment_to_employeeFragment"
+            app:destination="@id/employeeFragment" />
+        <argument
+            android:name="Region"
+            app:argType="string"
+            android:defaultValue="INDIA::NA::NA" />
+    </fragment>
+    <fragment
+        android:id="@+id/employeeFragment"
+        android:name="com.example.appgreenlightdemo.ui.fragments.employee.EmployeeFragment"
+        android:label="fragment_employee"
+        tools:layout="@layout/fragment_employee" >
+        <argument
+            android:name="Area"
+            app:argType="string"
+            android:defaultValue="INDIA::NA::NA::BURNT FOREST" />
+    </fragment>
+</navigation>
