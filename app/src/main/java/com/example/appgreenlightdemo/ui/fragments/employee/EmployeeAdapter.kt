@@ -8,6 +8,10 @@ import com.example.appgreenlightdemo.databinding.CardLayoutBinding
 import com.example.appgreenlightdemo.network.NetworkEmployee
 import com.example.appgreenlightdemo.ui.MainActivity
 
+/**
+ * createdBy : Amit
+ * description : this class will handle the employee list for recyclerview in employee fragment.
+ */
 class EmployeeAdapter(val mainActivity: MainActivity, val list : ArrayList<NetworkEmployee>) : RecyclerView.Adapter<EmployeeAdapter.ViewHold>() {
     class ViewHold(val binder : CardLayoutBinding) : RecyclerView.ViewHolder(binder.root) {
         fun bindInfo(employee : NetworkEmployee) {

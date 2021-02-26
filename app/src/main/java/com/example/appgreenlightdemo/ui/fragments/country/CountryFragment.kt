@@ -20,11 +20,15 @@ import com.example.appgreenlightdemo.network.NetworkCountry
 import com.example.appgreenlightdemo.network.NetworkResponse
 import com.example.appgreenlightdemo.ui.MainActivity
 import com.example.appgreenlightdemo.ui.fragments.CountryViewModel
-import com.example.appgreenlightdemo.ui.fragments.MainStateEvent
-import com.example.appgreenlightdemo.util.DataState
+import com.example.appgreenlightdemo.util.Utils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/***
+ * createdBy : Amit
+ * description :
+ *  this is a country fragment, responsible for handling the country data and interacting with user.
+ */
 @AndroidEntryPoint
 class CountryFragment : Fragment() {
 
@@ -47,7 +51,7 @@ class CountryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bind = FragmentCountryBinding.inflate(inflater, container, false)
-        viewModel.setStateEvent(MainStateEvent.GetPostEvent)
+        viewModel.setStateEvent(Utils.MainStateEvent.GetPostEvent)
         return binder.root
     }
 
@@ -62,7 +66,7 @@ class CountryFragment : Fragment() {
                 dataState.observe(viewLifecycleOwner, Observer { dataState ->
 
                     when(dataState) {
-                        is DataState.Success<NetworkResponse> -> {
+                        is Utils.DataState.Success<NetworkResponse> -> {
                             list = dataState.data.responseData.country.sortedBy { it.country }
                             adapter = CountryAdapter(mainActivity, ArrayList(list), navController)
                             binder.rcCountry.adapter = adapter
@@ -70,14 +74,14 @@ class CountryFragment : Fragment() {
                             binder.progress.isVisible = false
                         }
 
-                        is DataState.Error -> {
+                        is Utils.DataState.Error -> {
                             Log.e("TAG","error as ${dataState.exception.message}")
                             Toast.makeText(mainActivity, "Error as : ${dataState.exception.message}", Toast.LENGTH_SHORT).show()
                             binder.lytCountry.isVisible = false
                             binder.progress.isVisible = false
                         }
 
-                        is DataState.Loading -> {
+                        is Utils.DataState.Loading -> {
                             binder.lytCountry.isVisible = false
                             binder.progress.isVisible = true
                         }

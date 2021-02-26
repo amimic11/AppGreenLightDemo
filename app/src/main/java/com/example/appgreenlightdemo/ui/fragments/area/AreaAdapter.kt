@@ -9,6 +9,11 @@ import com.example.appgreenlightdemo.databinding.CardLayoutBinding
 import com.example.appgreenlightdemo.network.NetworkArea
 import com.example.appgreenlightdemo.ui.MainActivity
 
+/***
+ * createdBy : Amit
+ * description :
+ *  This is a area Adapter class for handling the recyclerview for area list...
+ */
 class AreaAdapter(val mainActivity: MainActivity, val list : ArrayList<NetworkArea>, val navController: NavController) : RecyclerView.Adapter<AreaAdapter.ViewHold>() {
     class ViewHold(val binder: CardLayoutBinding) : RecyclerView.ViewHolder(binder.root) {
         fun bindInfo(networkArea: NetworkArea, navController: NavController) {

@@ -18,6 +18,11 @@ import com.example.appgreenlightdemo.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * createdBy : Amit
+ * description :
+ * this is a zone fragment, responsible for showing data and interact with user
+ */
 @AndroidEntryPoint
 class ZoneFragment : Fragment() {
 
@@ -39,6 +44,9 @@ class ZoneFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        /**
+         * binding the view with zone fragment.
+         */
         bind = FragmentZoneBinding.inflate(inflater, container, false)
         viewModel.setZoneData(args.Country)
         binder.txtTitle.text = args.Country

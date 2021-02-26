@@ -4,9 +4,17 @@ import com.example.appgreenlightdemo.database.ResponseEntity
 import com.example.appgreenlightdemo.network.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.lang.Exception
 
+/**
+ * createdBy : Amit
+ * description : utils object class for app
+ */
 object Utils {
 
+    /**
+     * it will return the NetworkResponse model from database result
+     */
     fun prepareToNetworkModel(savedData: List<ResponseEntity>): NetworkResponse {
         var gson = Gson()
         var type = object : TypeToken<List<NetworkCountry>>() {}.type
@@ -27,6 +35,9 @@ object Utils {
         return NetworkResponse(200, responseData, true)
     }
 
+    /**
+     * it will return the responseEntity from networkResponse
+     */
     fun prepareForDBData(response: NetworkResponse): ResponseEntity {
         //country...
         var gson = Gson()
@@ -41,5 +52,24 @@ object Utils {
         val employee = gson.toJson(response.responseData.employee)
 
         return ResponseEntity(0, country, zone, region, area, employee)
+    }
+
+    /**
+     * this is a sealed class, used for maintaining event in country fragment.
+     */
+    sealed class MainStateEvent{
+        object GetPostEvent : MainStateEvent()
+
+        object None : MainStateEvent()
+
+    }
+
+    /**
+     * this is a sealed class used for maintaining the response from network and database.
+     */
+    sealed class DataState<out R> {
+        data class Success<out T>(val data : T) : DataState<T>()
+        data class Error(val exception : Exception) : DataState<Nothing>()
+        object Loading : DataState<Nothing>()
     }
 }

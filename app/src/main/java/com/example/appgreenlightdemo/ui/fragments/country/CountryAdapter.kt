@@ -10,6 +10,11 @@ import com.example.appgreenlightdemo.databinding.CardLayoutBinding
 import com.example.appgreenlightdemo.network.NetworkCountry
 import com.example.appgreenlightdemo.ui.MainActivity
 
+/***
+ * createdBy : Amit
+ * description :
+ *  this is an adapter class , responsible for handling country list for recyclerview in country fragment.
+ */
 class CountryAdapter(
     val mainActivity: MainActivity,
     val list: ArrayList<NetworkCountry>,

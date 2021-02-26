@@ -22,6 +22,11 @@ import com.example.appgreenlightdemo.ui.fragments.zone.ZoneViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/***
+ * createdBy : Amit
+ * description :
+ *  this is area fragment class, which is used to display the data related to area detail from local data base.
+ */
 @AndroidEntryPoint
 class AreaFragment : Fragment() {
 
@@ -42,7 +47,10 @@ class AreaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        /**
+         * defining viewbinding ...
+         */
         bind = FragmentAreaBinding.inflate(inflater, container, false)
         binder.txtTitle.text = args.Region
         viewModel.setAreaData(args.Region)
@@ -52,6 +60,9 @@ class AreaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+        /**
+         * lifecyclescope makes sure that the fragment binder always get the updated values.
+         */
         lifecycleScope.launch {
             binder.rcArea.layoutManager = LinearLayoutManager(mainActivity)
             binder.imgBack.setOnClickListener { mainActivity.onBackPressed() }

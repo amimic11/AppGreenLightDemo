@@ -18,6 +18,10 @@ import com.example.appgreenlightdemo.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * createdBy : Amit
+ * description : this is a region fragment, responsible for handling the interaction from user.
+ */
 @AndroidEntryPoint
 class RegionFragment : Fragment() {
 

@@ -16,6 +16,11 @@ import com.example.appgreenlightdemo.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+/**
+ * createdBy : Amit
+ * description :
+ * this is employee fragment class, which is responsible for showing data to the user.
+ */
 @AndroidEntryPoint
 class EmployeeFragment : Fragment() {
 

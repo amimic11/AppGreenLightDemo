@@ -10,6 +10,10 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
 
+/**
+ * createdBy : Amit
+ * description : this is a viewmodel class, responsible for handling the data between main repository and zone fragment.
+ */
 class ZoneViewModel
 @ViewModelInject
 constructor( private val appDao: AppDao): ViewModel() {
@@ -17,6 +21,9 @@ constructor( private val appDao: AppDao): ViewModel() {
     var list : ArrayList<NetworkZone> = ArrayList()
     var obsZoneList : MutableLiveData<ArrayList<NetworkZone>> = MutableLiveData()
 
+    /**
+     * get the zone list from main repository result and pass it to getZones()
+     */
     fun setZoneData(territory : String) {
         viewModelScope.launch {
             val data = appDao.getAllData()
@@ -24,6 +31,9 @@ constructor( private val appDao: AppDao): ViewModel() {
         }
     }
 
+    /**
+     * this function will update the mutable variable for zone list for territory.
+     */
     private fun getZones(response: String, territory: String) {
         list = ArrayList()
         val gson = Gson()
@@ -39,11 +49,17 @@ constructor( private val appDao: AppDao): ViewModel() {
         obsZoneList.postValue(list)
     }
 
+    /**
+     * sorting list in ascending order.
+     */
     fun setListbyASC() {
         val listASC = list.sortedBy { it.zone }
         obsZoneList.postValue(ArrayList(listASC))
     }
 
+    /**
+     * sorting list in descending order.
+     */
     fun setListbyDSC() {
         val listDSC = list.sortedByDescending { it.zone }
         obsZoneList.postValue(ArrayList(listDSC))

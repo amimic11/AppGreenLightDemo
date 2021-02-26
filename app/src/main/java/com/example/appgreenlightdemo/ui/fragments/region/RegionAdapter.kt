@@ -8,6 +8,11 @@ import com.example.appgreenlightdemo.databinding.CardLayoutBinding
 import com.example.appgreenlightdemo.network.NetworkCountryRegion
 import com.example.appgreenlightdemo.ui.MainActivity
 
+/**
+ * createdBy : Amit
+ * description :
+ *  this is an adapter class maintaining region list for recyclerview in region fragment.
+ */
 class RegionAdapter(val mainActivity: MainActivity, val list : ArrayList<NetworkCountryRegion>, val navController: NavController) : RecyclerView.Adapter<RegionAdapter.ViewHold>() {
     class ViewHold(val binder :  CardLayoutBinding) : RecyclerView.ViewHolder(binder.root) {
         fun bindInfo(networkCountryRegion: NetworkCountryRegion, navController: NavController) {

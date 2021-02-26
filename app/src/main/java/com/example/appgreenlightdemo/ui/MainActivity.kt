@@ -7,6 +7,10 @@ import com.example.appgreenlightdemo.R
 import com.example.appgreenlightdemo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * createdBy : Amit
+ * description : this is main Activity, responsible for handling the navigation graph
+ */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 

@@ -3,6 +3,11 @@ package com.example.appgreenlightdemo.network
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+/***
+ * createdBy : Amit
+ * description :
+ *  this is a model class, used by retrofit
+ */
 data class NetworkResponse(
     @SerializedName("ResponseStatus")
     @Expose

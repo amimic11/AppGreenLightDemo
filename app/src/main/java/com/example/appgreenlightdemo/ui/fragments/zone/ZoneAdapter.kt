@@ -10,6 +10,10 @@ import com.example.appgreenlightdemo.network.NetworkZone
 import com.example.appgreenlightdemo.ui.MainActivity
 import com.example.appgreenlightdemo.ui.fragments.country.CountryFragmentDirections
 
+/**
+ * createdBy : Amit
+ * description : it is adapter class, responsible for handling zone list for recyclerview in zone fragment.
+ */
 class ZoneAdapter(val mainActivity: MainActivity, val list : ArrayList<NetworkZone>, val navController: NavController) : RecyclerView.Adapter<ZoneAdapter.ViewHold>() {
     class ViewHold(val binder : CardLayoutBinding) : RecyclerView.ViewHolder(binder.root) {
         fun bindInfo(networkZone: NetworkZone, navController: NavController) {
